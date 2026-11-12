@@ -1,1 +1,0 @@
-import{n as e}from"./wayfinder-CrMhiGOP.js";var t=e=>({url:t.url(e),method:`post`});t.definition={methods:[`post`],url:`/user/confirm-password`},t.url=n=>t.definition.url+e(n),t.post=e=>({url:t.url(e),method:`post`});var n={store:Object.assign(t,t)};export{t as n,n as t};

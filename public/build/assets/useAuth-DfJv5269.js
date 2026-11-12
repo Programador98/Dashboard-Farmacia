@@ -1,0 +1,1 @@
+import{m as e}from"./vue.runtime.esm-bundler-28hdBBvf.js";import{l as t}from"./app-C7KZ4REx.js";function n(){let n=t(),r=e(()=>n.props.auth.user),i=e(()=>r.value?.permissions??[]),a=e(()=>r.value?.roles??[]);return{user:r,can:e=>i.value.includes(e),hasRole:e=>a.value.includes(e),permissions:i,roles:a}}export{n as t};

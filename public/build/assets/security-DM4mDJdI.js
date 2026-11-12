@@ -1,0 +1,1 @@
+import{n as e}from"./wayfinder-BZZSG9Gn.js";var t=e=>({url:t.url(e),method:`get`});t.definition={methods:[`get`,`head`],url:`/settings/security`},t.url=n=>t.definition.url+e(n),t.get=e=>({url:t.url(e),method:`get`}),t.head=e=>({url:t.url(e),method:`head`}),Object.assign(t,t);export{t};

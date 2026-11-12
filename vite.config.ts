@@ -11,8 +11,6 @@ export default defineConfig({
             input: ['resources/css/app.css', 'resources/js/app.ts'],
             refresh: true,
         }),
-        inertia(),
-        tailwindcss(),
         vue({
             template: {
                 transformAssetUrls: {
@@ -21,6 +19,8 @@ export default defineConfig({
                 },
             },
         }),
+        inertia(),
+        tailwindcss(),
         wayfinder(),
     ],
 });
