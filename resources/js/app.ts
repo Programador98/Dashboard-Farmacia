@@ -12,7 +12,7 @@ createInertiaApp({
     layout: (name) => {
          const page = name.toLowerCase();
         switch (true) {
-            case page === 'Welcome':
+            case page === 'welcome':
                 return null;
             case page.startsWith('auth/'):
                 return AuthLayout;
