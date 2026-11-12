@@ -1,12 +1,3 @@
-# --- ETAPA 1: Compilar Vue 3 + Tailwind CSS con Node.js ---
-FROM node:20 AS node_build
-WORKDIR /app
-COPY package*.json ./
-RUN npm install
-COPY . .
-RUN npm run build
-
-# --- ETAPA 2: Servidor PHP + Apache ---
 FROM php:8.2-apache
 
 # Instalar extensiones necesarias de PHP para Laravel y SQLite
@@ -32,18 +23,17 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 WORKDIR /var/www/html
 
-# Copiar el proyecto y los archivos compilados del frontend
+# Copiar todo el proyecto (incluyendo la carpeta public/build ya compilada)
 COPY . .
-COPY --from=node_build /app/public/build ./public/build
 
-# Instalar dependencias de PHP optimizadas para producción
+# Instalar dependencias de PHP
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
-# Crear base de datos SQLite y dar permisos de escritura
+# Crear base de datos SQLite y dar permisos
 RUN touch database/database.sqlite \
     && chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache /var/www/html/database
 
 EXPOSE 80
 
-# Iniciar migraciones y arrancar el servidor web
+# Migraciones automáticas y arranque de Apache
 CMD php artisan migrate:fresh --seed --force && apache2-foreground
