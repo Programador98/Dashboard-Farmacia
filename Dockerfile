@@ -27,7 +27,7 @@ WORKDIR /var/www/html
 COPY . .
 
 # Instalar dependencias ignorando requerimientos de plataforma estrictos
-RUN composer install --no-dev --optimize-autoloader --no-interaction --ignore-platform-reqs
+RUN composer install --optimize-autoloader --no-interaction --ignore-platform-reqs
 
 # Crear base de datos SQLite y dar permisos
 RUN touch database/database.sqlite \
